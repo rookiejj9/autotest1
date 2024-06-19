@@ -19,8 +19,8 @@ def login_and_register(login_a_classname, register_a_classname):
 
 def button_click(button_classname):
     """
-    按钮点击验证
-    :return:
+    :param button_classname: try_now按钮classname
+    :return: None
     """
     # 获取登录连接
     try_now_button = driver.find_element(By.CSS_SELECTOR, f'a.{button_classname}').click()
