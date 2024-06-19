@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 
@@ -15,7 +14,6 @@ def login_and_register(login_a_classname, register_a_classname):
     assert (login_button == 'https://center.360proxy.com/Login/Login')
 
     register_button = driver.find_element(By.CSS_SELECTOR, f'a.{register_a_classname}').get_attribute('href')
-    print(register_button)
     assert (register_button == 'https://center.360proxy.com/Login/Register')
 
 
@@ -25,7 +23,11 @@ def button_click(button_classname):
     :return:
     """
     # 获取登录连接
-    pass
+    try_now_button = driver.find_element(By.CSS_SELECTOR, f'a.{button_classname}').click()
+    try_now_link = driver.current_url
+    assert (try_now_link == 'https://center.360proxy.com/Login/Register')
+
+    driver.back()
 
 
 if __name__ == '__main__':
@@ -39,6 +41,8 @@ if __name__ == '__main__':
 
     # 验证登录连接和注册连接
     login_and_register('vh-h-btn', 'vh-h-btn.blue')
+    # 按钮点击验证
+    button_click('ix-banner-user')
 
     # 关闭浏览器
     driver.quit()
