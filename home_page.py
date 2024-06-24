@@ -58,6 +58,23 @@ def video_play1(video_classname):
     driver.execute_script("arguments[0].style.display='none';", video_close)
 
 
+def home_page_first_proxy_button(div_classname):
+    """
+    :param div_classname: 第一个代理按钮div元素classname
+    :return: None
+    """
+    div_a_list = driver.find_element(By.CLASS_NAME,f'{div_classname}').find_elements(By.TAG_NAME, 'a')
+    for _ in div_a_list:
+        a_element = _.get_attribute('href')
+        _.click()
+        time.sleep(2)
+        a_element_click_url = driver.current_url
+        # print(a_element_click_url, a_element)
+        assert (a_element == a_element_click_url)
+        time.sleep(2)
+        driver.back()
+
+
 if __name__ == '__main__':
     # 设置Chrome选项
     options = webdriver.ChromeOptions()
@@ -70,6 +87,7 @@ if __name__ == '__main__':
     driver.get("https://www.360proxy.com/zh-tw/")
     driver.maximize_window()
     time.sleep(5)
+    driver.find_element(By.ID, 'CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click()
 
     # 验证登录连接和注册连接
     login_and_register('vh-h-btn', 'vh-h-btn.blue')
@@ -77,3 +95,5 @@ if __name__ == '__main__':
     try_now_click('ix-banner-user')
     # 首页视频播放
     video_play1('video_logo_play')
+    # 首页底部代理按钮连接循环验证
+    home_page_first_proxy_button('ix-banner-proxy')
