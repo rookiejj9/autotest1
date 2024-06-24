@@ -118,12 +118,12 @@ if __name__ == '__main__':
     driver.find_element(By.ID, 'CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click()
 
     # 验证登录连接和注册连接
-    # login_and_register('vh-h-btn', 'vh-h-btn.blue')
+    login_and_register('vh-h-btn', 'vh-h-btn.blue')
     # 按钮点击验证
-    # try_now_click('ix-banner-user')
+    try_now_click('ix-banner-user')
     # 首页视频播放
-    # video_play1('video_logo_play')
+    video_play1('video_logo_play')
     # 首页底部代理按钮连接循环验证
-    # home_page_first_proxy_button('ix-banner-proxy')
+    home_page_first_proxy_button('ix-banner-proxy')
     # 介绍视频按钮
     video_play2('intruduct-video')
