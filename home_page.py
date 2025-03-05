@@ -11,10 +11,10 @@ def login_and_register(login_a_classname, register_a_classname):
     """
     # 获取登录连接
     login_button = driver.find_element(By.CSS_SELECTOR, f'a.{login_a_classname}').get_attribute('href')
-    assert (login_button == 'https://center.360proxy.com/Login/Login')
+    assert (login_button == '')
 
     register_button = driver.find_element(By.CSS_SELECTOR, f'a.{register_a_classname}').get_attribute('href')
-    assert (register_button == 'https://center.360proxy.com/Login/Register')
+    assert (register_button == '')
 
 
 def try_now_click(try_now_classname):
@@ -25,7 +25,7 @@ def try_now_click(try_now_classname):
     # 获取登录连接
     try_now_button = driver.find_element(By.CSS_SELECTOR, f'a.{try_now_classname}').click()
     try_now_link = driver.current_url
-    assert (try_now_link == 'https://center.360proxy.com/Login/Register')
+    assert (try_now_link == '')
 
     # 返回上一页
     driver.back()
@@ -42,7 +42,7 @@ def video_play1(video_classname):
 
     # 验证视频链接
     video_link = video_element.find_element(By.TAG_NAME, "source").get_attribute("src")
-    assert (video_link == 'https://www.360proxy.com/360Proxywebsite.mp4')
+    assert (video_link == '')
 
     # 点击视频播放按钮
     video_button.click()
@@ -86,7 +86,7 @@ def video_play2(video2_id):
 
     # 验证视频链接
     video_link = video_element.find_element(By.TAG_NAME, "source").get_attribute("src")
-    assert (video_link == 'https://www.360proxy.com/360Proxywebsite.mp4')
+    assert (video_link == '')
 
     # js执行滑动到对应element位置，并点击
     driver.execute_script("arguments[0].scrollIntoView(true);", video_element)
