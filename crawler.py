@@ -27,4 +27,4 @@ def check_links(url):
         print(f"Error accessing {url}: {e}")
 
 
-check_links("https://www.360proxy.com/zh-tw/")
+check_links("")
